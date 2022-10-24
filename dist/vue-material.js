@@ -13048,6 +13048,7 @@ exports.default = {
     },
     sortTable: function sortTable() {
       if (Array.isArray(this.value)) {
+        console.log('sorting table');
         this.$emit('input', this.mdSortFn(this.value));
       }
     },
@@ -13075,6 +13076,7 @@ exports.default = {
   },
   created: function created() {
     if (this.mdSort) {
+      console.log('table created and told to sort');
       this.sortTable();
     }
 
