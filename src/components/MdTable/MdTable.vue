@@ -106,11 +106,8 @@
         type: Function,
         default (value) {
           const sortBy = this.MdTable.sort
-          console.log(this.MdTable.sortOrder);
           const isAsc = this.MdTable.sortOrder === 'asc'
-          console.log(isAsc);
           const multiplier = isAsc ? 1 : -1
-          console.log(multiplier);
 
           /* eslint-disable complexity */
           const comparator = function(a, b) {
@@ -347,7 +344,6 @@
       },
       sortTable () {
         if (Array.isArray(this.value)) {
-          console.log('sorting table');
           this.$emit('input', this.mdSortFn(this.value))
         }
       },
@@ -372,7 +368,6 @@
     },
     created () {
       if (this.mdSort) {
-        console.log('table created and told to sort');
         this.sortTable()
       }
 

@@ -12799,11 +12799,8 @@ exports.default = {
       type: Function,
       default: function _default(value) {
         var sortBy = this.MdTable.sort;
-        console.log(this.MdTable.sortOrder);
         var isAsc = this.MdTable.sortOrder === 'asc';
-        console.log(isAsc);
         var multiplier = isAsc ? 1 : -1;
-        console.log(multiplier);
 
         /* eslint-disable complexity */
         var comparator = function comparator(a, b) {
@@ -13051,7 +13048,6 @@ exports.default = {
     },
     sortTable: function sortTable() {
       if (Array.isArray(this.value)) {
-        console.log('sorting table');
         this.$emit('input', this.mdSortFn(this.value));
       }
     },
@@ -13079,7 +13075,6 @@ exports.default = {
   },
   created: function created() {
     if (this.mdSort) {
-      console.log('table created and told to sort');
       this.sortTable();
     }
 
