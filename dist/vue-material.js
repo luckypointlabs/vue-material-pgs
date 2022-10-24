@@ -12937,6 +12937,9 @@ exports.default = {
       immediate: true,
       handler: function handler() {
         this.MdTable.hasValue = this.hasValue;
+        if (this.MdTable.hasValue) {
+          this.sortTable();
+        }
       }
     },
     'MdTable.selectedItems': function MdTableSelectedItems(val, old) {
@@ -12971,7 +12974,6 @@ exports.default = {
       this.syncSelectedValue();
     },
     value: function value() {
-      this.sortTable();
       this.syncSelectedValue();
       this.setWidth();
     }

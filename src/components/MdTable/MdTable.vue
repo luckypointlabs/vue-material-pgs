@@ -244,6 +244,9 @@
         immediate: true,
         handler () {
           this.MdTable.hasValue = this.hasValue
+          if (this.MdTable.hasValue) {
+            this.sortTable();
+          }
         }
       },
       'MdTable.selectedItems' (val, old) {
@@ -274,7 +277,6 @@
         this.syncSelectedValue()
       },
       value () {
-        this.sortTable()
         this.syncSelectedValue()
         this.setWidth()
       }
