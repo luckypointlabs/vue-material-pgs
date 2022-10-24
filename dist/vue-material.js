@@ -12971,6 +12971,7 @@ exports.default = {
       this.syncSelectedValue();
     },
     value: function value() {
+      this.sortTable();
       this.syncSelectedValue();
       this.setWidth();
     }

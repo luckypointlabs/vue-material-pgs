@@ -274,6 +274,7 @@
         this.syncSelectedValue()
       },
       value () {
+        this.sortTable()
         this.syncSelectedValue()
         this.setWidth()
       }
