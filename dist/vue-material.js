@@ -12799,8 +12799,11 @@ exports.default = {
       type: Function,
       default: function _default(value) {
         var sortBy = this.MdTable.sort;
+        console.log(this.MdTable.sortOrder);
         var isAsc = this.MdTable.sortOrder === 'asc';
+        console.log(isAsc);
         var multiplier = isAsc ? 1 : -1;
+        console.log(multiplier);
 
         /* eslint-disable complexity */
         var comparator = function comparator(a, b) {

@@ -106,8 +106,11 @@
         type: Function,
         default (value) {
           const sortBy = this.MdTable.sort
+          console.log(this.MdTable.sortOrder);
           const isAsc = this.MdTable.sortOrder === 'asc'
+          console.log(isAsc);
           const multiplier = isAsc ? 1 : -1
+          console.log(multiplier);
 
           /* eslint-disable complexity */
           const comparator = function(a, b) {
