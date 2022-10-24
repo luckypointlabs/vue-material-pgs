@@ -12934,7 +12934,7 @@ exports.default = {
       immediate: true,
       handler: function handler() {
         this.MdTable.hasValue = this.hasValue;
-        if (this.MdTable.hasValue) {
+        if (this.MdTable.hasValue && this.mdSort) {
           this.sortTable();
         }
       }
