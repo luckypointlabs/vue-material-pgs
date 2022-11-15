@@ -4879,7 +4879,6 @@ exports.default = {
     handleSimpleCheckbox: function handleSimpleCheckbox() {
       console.log('emitting change event');
       console.log(this.isSelected);
-      console.log(this.isSelected());
       this.$emit('change', this.isSelected ? this.falseValue : this.trueValue);
     },
     toggleCheck: function toggleCheck() {
