@@ -95,6 +95,9 @@ export default {
       this.$emit('change', this.isSelected ? null : this.value)
     },
     handleSimpleCheckbox () {
+      console.log('emitting change event');
+      console.log(this.isSelected);
+      console.log(this.isSelected());
       this.$emit('change', this.isSelected ? this.falseValue : this.trueValue)
     },
     toggleCheck () {
@@ -106,6 +109,7 @@ export default {
         } else if (this.hasValue) {
           this.handleSingleSelectCheckbox()
         } else {
+          console.log('simple checkbox function call');
           this.handleSimpleCheckbox()
         }
       }
