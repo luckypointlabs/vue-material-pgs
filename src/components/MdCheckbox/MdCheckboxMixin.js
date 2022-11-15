@@ -108,7 +108,6 @@ export default {
         } else if (this.hasValue) {
           this.handleSingleSelectCheckbox()
         } else {
-          console.log('simple checkbox function call');
           this.handleSimpleCheckbox()
         }
       }

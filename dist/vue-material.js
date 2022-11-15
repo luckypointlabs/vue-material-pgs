@@ -4890,7 +4890,6 @@ exports.default = {
         } else if (this.hasValue) {
           this.handleSingleSelectCheckbox();
         } else {
-          console.log('simple checkbox function call');
           this.handleSimpleCheckbox();
         }
       }
@@ -18395,15 +18394,7 @@ var render = function() {
     [
       _c(
         "div",
-        {
-          staticClass: "md-checkbox-container",
-          on: {
-            click: function($event) {
-              $event.stopPropagation()
-              return _vm.toggleCheck.apply(null, arguments)
-            }
-          }
-        },
+        { staticClass: "md-checkbox-container" },
         [
           _c(
             "md-ripple",

@@ -1,6 +1,6 @@
 <template>
   <div class="md-checkbox" :class="[$mdActiveTheme, checkClasses]">
-    <div class="md-checkbox-container" @click.stop="toggleCheck">
+    <div class="md-checkbox-container">
       <md-ripple md-centered :md-active.sync="rippleActive" :md-disabled="disabled">
         <input :id="id" type="checkbox" v-bind="attrs" :indeterminate.prop="indeterminate">
       </md-ripple>
