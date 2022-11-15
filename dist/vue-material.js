@@ -18394,7 +18394,10 @@ var render = function() {
     [
       _c(
         "div",
-        { staticClass: "md-checkbox-container" },
+        {
+          staticClass: "md-checkbox-container",
+          on: { click: _vm.toggleCheck }
+        },
         [
           _c(
             "md-ripple",
@@ -18438,12 +18441,7 @@ var render = function() {
             {
               staticClass: "md-checkbox-label",
               attrs: { for: _vm.id },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.toggleCheck.apply(null, arguments)
-                }
-              }
+              on: { click: _vm.toggleCheck }
             },
             [_vm._t("default")],
             2

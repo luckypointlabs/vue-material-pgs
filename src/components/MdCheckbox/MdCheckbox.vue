@@ -1,12 +1,12 @@
 <template>
   <div class="md-checkbox" :class="[$mdActiveTheme, checkClasses]">
-    <div class="md-checkbox-container">
+    <div class="md-checkbox-container" @click="toggleCheck">
       <md-ripple md-centered :md-active.sync="rippleActive" :md-disabled="disabled">
         <input :id="id" type="checkbox" v-bind="attrs" :indeterminate.prop="indeterminate">
       </md-ripple>
     </div>
 
-    <label :for="id" class="md-checkbox-label" v-if="$slots.default" @click.prevent="toggleCheck">
+    <label :for="id" class="md-checkbox-label" v-if="$slots.default" @click="toggleCheck">
       <slot />
     </label>
   </div>
