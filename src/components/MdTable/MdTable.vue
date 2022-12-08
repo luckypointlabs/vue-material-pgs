@@ -273,7 +273,10 @@
       mdSelectedValue () {
         this.syncSelectedValue()
       },
-      value () {
+      value (val, old) {
+        console.log('value changed');
+        console.log(old);
+        console.log(val);
         this.syncSelectedValue()
         this.setWidth()
       }

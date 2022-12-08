@@ -12970,7 +12970,10 @@ exports.default = {
     mdSelectedValue: function mdSelectedValue() {
       this.syncSelectedValue();
     },
-    value: function value() {
+    value: function value(val, old) {
+      console.log('value changed');
+      console.log(old);
+      console.log(val);
       this.syncSelectedValue();
       this.setWidth();
     }
