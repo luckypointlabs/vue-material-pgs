@@ -12971,9 +12971,37 @@ exports.default = {
       this.syncSelectedValue();
     },
     value: function value(val, old) {
-      console.log('value changed');
-      console.log(old);
-      console.log(val);
+      var _this2 = this;
+
+      var changed = function () {
+        var isValEmpty = _this2.isEmpty(val);
+        var isOldEmpty = _this2.isEmpty(old);
+        var noValues = isValEmpty && isOldEmpty;
+
+        if (noValues) {
+          return false;
+        } else if (!noValues) {
+          return val.length !== old.length ? true : !val.every(function (item, index) {
+            return item === old[index];
+          });
+        }
+
+        if (val.length !== old.length) {
+          return true;
+        }
+
+        return val.every(function (item, index) {
+          return item == old[index];
+        });
+      }();
+
+      if (changed) {
+        console.log('changed');
+        if (this.mdSort) {
+          this.sortTable();
+        }
+      }
+
       this.syncSelectedValue();
       this.setWidth();
     }
@@ -13002,21 +13030,21 @@ exports.default = {
       return id;
     },
     setScroll: function setScroll($event) {
-      var _this2 = this;
-
-      (0, _raf2.default)(function () {
-        if (_this2.mdFixedHeader) {
-          _this2.$refs.fixedHeaderContainer.scrollLeft = $event.target.scrollLeft;
-        }
-
-        _this2.hasContentScroll = $event.target.scrollTop > 0;
-      });
-    },
-    setHeaderScroll: function setHeaderScroll($event) {
       var _this3 = this;
 
       (0, _raf2.default)(function () {
-        _this3.MdTable.contentEl.scrollLeft = $event.target.scrollLeft;
+        if (_this3.mdFixedHeader) {
+          _this3.$refs.fixedHeaderContainer.scrollLeft = $event.target.scrollLeft;
+        }
+
+        _this3.hasContentScroll = $event.target.scrollTop > 0;
+      });
+    },
+    setHeaderScroll: function setHeaderScroll($event) {
+      var _this4 = this;
+
+      (0, _raf2.default)(function () {
+        _this4.MdTable.contentEl.scrollLeft = $event.target.scrollLeft;
       });
     },
     getContentEl: function getContentEl() {
@@ -13059,14 +13087,14 @@ exports.default = {
       this.$emit('md-selected', val);
     },
     syncSelectedValue: function syncSelectedValue() {
-      var _this4 = this;
+      var _this5 = this;
 
       this.$nextTick().then(function () {
         // render the table first
-        if (_this4.MdTable.selectingMode === 'single') {
-          _this4.MdTable.singleSelection = _this4.mdSelectedValue;
-        } else if (_this4.MdTable.selectingMode === 'multiple') {
-          _this4.MdTable.selectedItems = _this4.mdSelectedValue || [];
+        if (_this5.MdTable.selectingMode === 'single') {
+          _this5.MdTable.singleSelection = _this5.mdSelectedValue;
+        } else if (_this5.MdTable.selectingMode === 'multiple') {
+          _this5.MdTable.selectedItems = _this5.mdSelectedValue || [];
         }
       });
     },
