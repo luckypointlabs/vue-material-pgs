@@ -294,7 +294,6 @@
         })()
 
         if (changed) {
-          console.log('changed');
           if (this.mdSort) {
             this.sortTable();
           }
