@@ -16192,7 +16192,37 @@ exports.default = {
     mdSelectedValue: function mdSelectedValue() {
       this.syncSelectedValue();
     },
-    value: function value() {
+    value: function value(val, old) {
+      var _this2 = this;
+
+      var changed = (function () {
+        var isValEmpty = _this2.isEmpty(val);
+        var isOldEmpty = _this2.isEmpty(old);
+        var noValues = isValEmpty && isOldEmpty;
+
+        if (noValues) {
+          return false;
+        } else if (!noValues) {
+          return val.length !== old.length ? true : !val.every((function (item, index) {
+            return item === old[index];
+          }));
+        }
+
+        if (val.length !== old.length) {
+          return true;
+        }
+
+        return val.every((function (item, index) {
+          return item == old[index];
+        }));
+      })();
+
+      if (changed) {
+        if (this.mdSort) {
+          this.sortTable();
+        }
+      }
+
       this.syncSelectedValue();
       this.setWidth();
     }
@@ -16221,21 +16251,21 @@ exports.default = {
       return id;
     },
     setScroll: function setScroll($event) {
-      var _this2 = this;
-
-      (0, _raf2.default)((function () {
-        if (_this2.mdFixedHeader) {
-          _this2.$refs.fixedHeaderContainer.scrollLeft = $event.target.scrollLeft;
-        }
-
-        _this2.hasContentScroll = $event.target.scrollTop > 0;
-      }));
-    },
-    setHeaderScroll: function setHeaderScroll($event) {
       var _this3 = this;
 
       (0, _raf2.default)((function () {
-        _this3.MdTable.contentEl.scrollLeft = $event.target.scrollLeft;
+        if (_this3.mdFixedHeader) {
+          _this3.$refs.fixedHeaderContainer.scrollLeft = $event.target.scrollLeft;
+        }
+
+        _this3.hasContentScroll = $event.target.scrollTop > 0;
+      }));
+    },
+    setHeaderScroll: function setHeaderScroll($event) {
+      var _this4 = this;
+
+      (0, _raf2.default)((function () {
+        _this4.MdTable.contentEl.scrollLeft = $event.target.scrollLeft;
       }));
     },
     getContentEl: function getContentEl() {
@@ -16278,14 +16308,14 @@ exports.default = {
       this.$emit('md-selected', val);
     },
     syncSelectedValue: function syncSelectedValue() {
-      var _this4 = this;
+      var _this5 = this;
 
       this.$nextTick().then((function () {
         // render the table first
-        if (_this4.MdTable.selectingMode === 'single') {
-          _this4.MdTable.singleSelection = _this4.mdSelectedValue;
-        } else if (_this4.MdTable.selectingMode === 'multiple') {
-          _this4.MdTable.selectedItems = _this4.mdSelectedValue || [];
+        if (_this5.MdTable.selectingMode === 'single') {
+          _this5.MdTable.singleSelection = _this5.mdSelectedValue;
+        } else if (_this5.MdTable.selectingMode === 'multiple') {
+          _this5.MdTable.selectedItems = _this5.mdSelectedValue || [];
         }
       }));
     },
@@ -27266,7 +27296,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_MdTable_vue__ = __webpack_require__(217);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_MdTable_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_MdTable_vue__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_MdTable_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, (function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_MdTable_vue__[key]; })) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2d02fd28_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MdTable_vue__ = __webpack_require__(482);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_744ea185_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MdTable_vue__ = __webpack_require__(482);
 function injectStyle (ssrContext) {
   __webpack_require__(464)
 }
@@ -27286,7 +27316,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_MdTable_vue___default.a,
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2d02fd28_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MdTable_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_744ea185_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MdTable_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,

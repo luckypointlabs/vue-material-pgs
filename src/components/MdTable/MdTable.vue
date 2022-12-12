@@ -273,7 +273,32 @@
       mdSelectedValue () {
         this.syncSelectedValue()
       },
-      value () {
+      value (val, old) {
+
+        let changed = (() => {
+          let isValEmpty = this.isEmpty(val);
+          let isOldEmpty = this.isEmpty(old);
+          let noValues = isValEmpty && isOldEmpty;
+
+          if (noValues) {
+            return false;
+          } else if (!noValues) {
+            return (val.length !== old.length) ? true : !val.every((item, index) => item === old[index])
+          }
+
+          if (val.length !== old.length) {
+            return true;
+          }
+
+          return val.every((item, index) => item == old[index]);
+        })()
+
+        if (changed) {
+          if (this.mdSort) {
+            this.sortTable();
+          }
+        }
+
         this.syncSelectedValue()
         this.setWidth()
       }
