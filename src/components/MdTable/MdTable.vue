@@ -273,7 +273,7 @@
       mdSelectedValue () {
         this.syncSelectedValue()
       },
-      value (val, old) {
+      value () {
 
         // let changed = (() => {
         //   let isValEmpty = this.isEmpty(val);

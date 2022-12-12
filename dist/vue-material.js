@@ -12970,7 +12970,7 @@ exports.default = {
     mdSelectedValue: function mdSelectedValue() {
       this.syncSelectedValue();
     },
-    value: function value(val, old) {
+    value: function value() {
 
       // let changed = (() => {
       //   let isValEmpty = this.isEmpty(val);
